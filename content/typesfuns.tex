@@ -560,7 +560,7 @@ For example, looking something up in a \texttt{List} (rather than a vector) may 
 The \texttt{maybe} function is used to process values of type \texttt{Maybe}, either by applying a function to the value, if there is one, or by providing a default value:
 
 \begin{code}
-maybe : Maybe a -> |(default:b) -> (a -> b) -> b
+maybe : |(default:b) -> (a -> b) -> Maybe a -> b
 \end{code}
 
 
