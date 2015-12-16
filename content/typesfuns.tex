@@ -100,7 +100,7 @@ Idris> mult (S (S (S Z))) (plus (S (S Z)) (S (S Z)))
 \end{lstlisting}
 
 \noindent
-\textbf{Note:} \Idris{} automatically desugars the \texttt{Nat} representation into a more human readable format. The result of \verb!plus (S (S Z)) (S (S Z))! is actually \verb!(S (S (S (S Z))))! which is the Integer 4. This can be checked at the \Idris{} prompt:
+\textbf{Note:} \Idris{} automatically sugars the \texttt{Nat} representation into a more human readable format. The result of \verb!plus (S (S Z)) (S (S Z))! is actually \verb!(S (S (S (S Z))))! which is the Integer 4. This can be checked at the \Idris{} prompt:
 
 \begin{lstlisting}[style=stdout]
 Idris> (S (S (S (S Z))))
