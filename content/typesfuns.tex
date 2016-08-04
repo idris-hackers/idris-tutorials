@@ -637,12 +637,12 @@ Since the default value might not be used, we mark it as \texttt{Lazy} in case i
 Values can be paired with the following built-in data type:
 
 \begin{code}
-data Pair a b = MkPair a b
+data Pair a b = mkPair a b
 \end{code}
 
 
 \noindent
-As syntactic sugar, we can write \texttt{(a, b)} which, according to context, means either \texttt{Pair a b} or \texttt{MkPair a b}.
+As syntactic sugar, we can write \texttt{(a, b)} which, according to context, means either \texttt{Pair a b} or \texttt{mkPair a b}.
 Tuples can contain an arbitrary number of values, represented as nested pairs:
 
 \begin{code}
