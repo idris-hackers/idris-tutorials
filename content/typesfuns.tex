@@ -263,12 +263,20 @@ data Fin : Nat -> Type where
 \end{code}
 
 \noindent
+From the signature, we can see that this is a data type that takes a \tTC{Nat}, and produces a type.
+So this is not a set in the sense of a collection that is a container of objects,
+rather it is the canonical set of unnamed elements, as in "the set of 5 elements," for example. 
+Effectively, it is a type that captures integers that fall into the range of zero to \texttt{(n - 1)} where \tTC{n} is the argument used to instantiate the \tTC{Fin} type. 
+For example, \texttt{Fin 5} can be thought of as the type of integers between 0 and 4.
+
+Let us look at the constructors in greater detail.
+
 \tDC{FZ} is the zeroth element of a finite set with \texttt{S k} elements; \texttt{FS n} is the \texttt{n+1}th element of a finite set with \texttt{S k} elements.
 \tTC{Fin} is indexed by a \tTC{Nat}, which represents the number of elements in the set.
 Obviously we can't construct an element of an empty set, so neither constructor targets \texttt{Fin Z}.
 
-A useful application of the \tTC{Fin} family is to represent bounded natural numbers.
-Since the first \tTC{n} natural numbers form a finite set of \tTC{n} elements, we can treat \tTC{Fin n} as the set of natural numbers bounded by \tTC{n}.
+As mentioned above, a useful application of the \tTC{Fin} family is to represent bounded natural numbers.
+Since the first \tTC{n} natural numbers form a finite set of \tTC{n} elements, we can treat \tTC{Fin n} as the set of integers greater than or equal to zero and less than \tTC{n}.
 
 For example, the following function which looks up an element in a \tTC{Vect}, by a bounded index given as a \tTC{Fin n}, is defined in the prelude:
 
@@ -282,10 +290,11 @@ index (FS k) (x :: xs) = index k xs
 This function looks up a value at a given location in a vector.
 The location is bounded by the length of the vector (\texttt{n} in each case), so there is no
 need for a run-time bounds check.
-The type checker guarantees that the location is no larger than the length of the vector.
+The type checker guarantees that the location is no larger than the length of the vector, and of course no smaller than zero.
 
 Note also that there is no case for \texttt{Nil} here.
-This is because it is impossible. Since there is no element of \texttt{Fin Z}, and the location is a \texttt{Fin n}, then \texttt{n} can not be \tDC{Z}.
+This is because it is impossible. 
+Since there is no element of \texttt{Fin Z}, and the location is a \texttt{Fin n}, then \texttt{n} can not be \tDC{Z}.
 As a result, attempting to look up an element in an empty vector would give a compile time type error, since it would force \texttt{n} to be \tDC{Z}.
 
 
